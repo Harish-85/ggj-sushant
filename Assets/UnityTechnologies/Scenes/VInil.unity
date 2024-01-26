@@ -1032,6 +1032,8 @@ MonoBehaviour:
   minIdleTime: 5
   rayCastDistance: 8
   chaseDistance: 2
+  walking: 0
+  chasing: 0
   destinationAmount: 8
   player: {fileID: 4416926083347132244}
   idleTime: 0
@@ -1040,7 +1042,8 @@ MonoBehaviour:
   minChaseTime: 10
   maxChaseTime: 25
   jumpScareTime: 2
-  deathScene: Playground
+  deathScene: Vinil
+  hideScript: {fileID: 0}
 --- !u!95 &1016925208
 Animator:
   serializedVersion: 5
