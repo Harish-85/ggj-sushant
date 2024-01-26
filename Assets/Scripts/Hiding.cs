@@ -27,6 +27,7 @@ public class Hiding : MonoBehaviour
         {
 
             hideText.SetActive(true);
+            
             interactable = true;
 
 
@@ -46,8 +47,6 @@ public class Hiding : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
-
-
                 hideText.SetActive(false);
                 switchPlayerCam.SwitchPlayerCamWhenHiding();
                 //hideSound.Play();
@@ -68,6 +67,7 @@ public class Hiding : MonoBehaviour
         }
         if (hiding == true)
         {
+            hideText.SetActive(false );
             if (Input.GetKeyDown(KeyCode.Q))
             {
 
