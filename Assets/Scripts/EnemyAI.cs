@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] NavMeshAgent ai;
     [SerializeField] List<Transform> destinations;
     [SerializeField] Animator anim;
-    [SerializeField] float walkSpeed, chaseSpeed, maxIdleTime, minIdleTime, rayCastDistance , chaseDistance;
+    [SerializeField] float walkSpeed, chaseSpeed, maxIdleTime, minIdleTime, rayCastDistance= 15f , chaseDistance;
     bool walking, chasing;
     [SerializeField] int destinationAmount;
     [SerializeField] Transform player;
@@ -40,23 +40,22 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        Vector3 playerDirection = (player.position - transform.position); // this vector will always be pointing towards the player.
+        float distanceToPlayer = playerDirection.magnitude;
+       
+        Debug.Log(distanceToPlayer+" "+ rayCastDistance);
 
-        Vector3 playerDirection = (player.position - transform.position).normalized; // this vector will always be pointing towards the player.
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position,playerDirection , out hit,rayCastDistance))
+        if (distanceToPlayer <= rayCastDistance)
         {
-            if(hit.collider.gameObject.tag == "Player")
-            {
-                walking = false;
-                StopCoroutine(StayIdle());
-                StopCoroutine(Chase());
-                StartCoroutine(Chase());
-                anim.ResetTrigger("idle");
-                anim.ResetTrigger("walk");
-                anim.SetTrigger("sprint");
-                chasing = true;
-            }
+            walking = false;
+            StopCoroutine(StayIdle());
+            StopCoroutine(Chase());
+            StartCoroutine(Chase());
+            anim.ResetTrigger("idle");
+            anim.ResetTrigger("walk");
+            anim.SetTrigger("sprint");
+            chasing = true;
         }
         AIMovement();
     }
@@ -65,6 +64,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (chasing)
         {
+            Debug.Log("chasing");
             dest = player.position;
             ai.destination = dest;
             ai.speed = chaseSpeed;
@@ -83,7 +83,7 @@ public class EnemyAI : MonoBehaviour
 
         if (walking)
         {
-
+            Debug.Log("Walking");
             dest = currentDestination.position;
             ai.destination = dest;
             ai.speed = walkSpeed;
@@ -139,7 +139,5 @@ public class EnemyAI : MonoBehaviour
         anim.ResetTrigger("sprint");
         anim.ResetTrigger("idle");
         anim.SetTrigger("walk");
-
-
     }
 }

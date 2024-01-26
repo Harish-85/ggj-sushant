@@ -1021,11 +1021,11 @@ MonoBehaviour:
   - {fileID: 822136575}
   anim: {fileID: 1016925208}
   walkSpeed: 2
-  chaseSpeed: 7
+  chaseSpeed: 4
   maxIdleTime: 2
-  minIdleTime: 9
-  rayCastDistance: 15
-  chaseDistance: 3
+  minIdleTime: 5
+  rayCastDistance: 8
+  chaseDistance: 2
   destinationAmount: 8
   player: {fileID: 4416926083347132244}
   idleTime: 0
