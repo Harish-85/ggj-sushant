@@ -12,8 +12,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] NavMeshAgent ai;
     [SerializeField] List<Transform> destinations;
     [SerializeField] Animator anim;
-    [SerializeField] float walkSpeed, chaseSpeed, maxIdleTime, minIdleTime, rayCastDistance= 15f , chaseDistance;
-    bool walking, chasing;
+    [SerializeField] float walkSpeed, chaseSpeed, maxIdleTime, minIdleTime, rayCastDistance, chaseDistance;
+    public bool walking, chasing;
     [SerializeField] int destinationAmount;
     [SerializeField] Transform player;
     Transform currentDestination;
@@ -29,7 +29,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float jumpScareTime;
 
     [SerializeField] string deathScene;
-    // Start is called before the first frame update
+    [SerializeField] Hiding hideScript;
+  
     void Start()
     {
         walking = true;
@@ -44,9 +45,9 @@ public class EnemyAI : MonoBehaviour
         Vector3 playerDirection = (player.position - transform.position); // this vector will always be pointing towards the player.
         float distanceToPlayer = playerDirection.magnitude;
        
-        Debug.Log(distanceToPlayer+" "+ rayCastDistance);
+        //Debug.Log(distanceToPlayer+" "+ rayCastDistance);
 
-        if (distanceToPlayer <= rayCastDistance)
+        if (distanceToPlayer <= rayCastDistance && !hideScript.hiding)
         {
             walking = false;
             StopCoroutine(StayIdle());
@@ -60,11 +61,19 @@ public class EnemyAI : MonoBehaviour
         AIMovement();
     }
 
+    public void stopChase()
+    {
+        walking = true;
+        chasing = false;
+        StopCoroutine(Chase());
+        randNum = Random.Range(0,destinationAmount);
+        currentDestination = destinations[randNum];
+    }
     void AIMovement()
     {
         if (chasing)
         {
-            Debug.Log("chasing");
+            
             dest = player.position;
             ai.destination = dest;
             ai.speed = chaseSpeed;
@@ -74,6 +83,7 @@ public class EnemyAI : MonoBehaviour
                 anim.ResetTrigger("walk");
                 anim.ResetTrigger("idle");
                 anim.ResetTrigger("sprint");
+              
                 anim.SetTrigger("jumpscare");
                 StartCoroutine(Death());
                 chasing = false;
@@ -83,7 +93,7 @@ public class EnemyAI : MonoBehaviour
 
         if (walking)
         {
-            Debug.Log("Walking");
+            //Debug.Log("Walking");
             dest = currentDestination.position;
             ai.destination = dest;
             ai.speed = walkSpeed;
@@ -120,10 +130,7 @@ public class EnemyAI : MonoBehaviour
     {
         chaseTime = Random.Range(minChaseTime,maxChaseTime);
         yield return new WaitForSeconds(chaseTime);
-        walking = true;
-        chasing = false;
-        randNum = Random.Range(0, destinationAmount);
-        currentDestination = destinations[randNum];
+        stopChase();
         anim.ResetTrigger("sprint");
         anim.ResetTrigger("idle");
         anim.SetTrigger("walk");
