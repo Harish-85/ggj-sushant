@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f8fc9d559ab9c3408a723391bdc2cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BatteryWeight: 0
+  BatteryWeight: 30
   HoverObject:
   - {fileID: 6316257187107205057}
   CK: 101
