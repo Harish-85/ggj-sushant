@@ -53,8 +53,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ContentAnchor: {fileID: 8919320772099105508}
-  m_BubbleLeft: {fileID: -5829000521551651004, guid: 6e31716df34c4f04a8a382ad03c5790d, type: 3}
-  m_BubbleRight: {fileID: 7032387963612836835, guid: ce19183024b657340b5e830b1549618e, type: 3}
+  m_BubbleLeft: {fileID: -5829000521551651004, guid: 6e31716df34c4f04a8a382ad03c5790d,
+    type: 3}
+  m_BubbleRight: {fileID: 7032387963612836835, guid: ce19183024b657340b5e830b1549618e,
+    type: 3}
   m_ChatOptions:
     audio: 0
     text: 1
@@ -368,7 +370,8 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0d978873da4cbb246aced65b3450ebcf, type: 2}
-  m_sharedMaterial: {fileID: -4501209170994636121, guid: 0d978873da4cbb246aced65b3450ebcf, type: 2}
+  m_sharedMaterial: {fileID: -4501209170994636121, guid: 0d978873da4cbb246aced65b3450ebcf,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
