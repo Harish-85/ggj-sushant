@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/UnityTechnologies/Scenes/MenuScene.unity
     guid: a5ca7c82ec981954c840e9838736073d
   - enabled: 1
+    path: Assets/UnityTechnologies/Scenes/VinilLevel1.unity
+    guid: ee6341fa59992874093ef7261b99c6a5
+  - enabled: 0
     path: Assets/UnityTechnologies/Scenes/VInil.unity
     guid: 42f8263fdaa302e4cbe7ae3b98ed5007
   m_configObjects: {}
