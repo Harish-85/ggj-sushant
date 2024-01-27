@@ -13,7 +13,7 @@ public class Hiding : MonoBehaviour
     [SerializeField] float loseDistance;
     // [SerializeField] AudioSource hideSound, stopHideSound;
     // [SerializeField] roomDetector detector;
-    [SerializeField] SwitchPlayer switchPlayerCam;
+    [SerializeField] FPPCamSwitch switchPlayerCam;
 
 
     void Start()
