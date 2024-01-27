@@ -8,7 +8,7 @@ public class CinemachineSwitcher : MonoBehaviour
     [SerializeField] InputAction action;
 
     Animator animator;
-
+    [SerializeField] GameObject flashLight;
     bool fpp = true;
     private void Awake()
     {
@@ -32,11 +32,13 @@ public class CinemachineSwitcher : MonoBehaviour
     void SwitchState()
     {
         if (fpp)
-        {
+        {   
+            flashLight.SetActive(false);
             animator.Play("TPP");
         }
         else
         {
+            flashLight.SetActive(true);
             animator.Play("FPP");
         }
         fpp = !fpp;

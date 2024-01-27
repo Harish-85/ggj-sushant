@@ -29,41 +29,7 @@ MonoBehaviour:
     billingAccount: billing-accounts/fb38df6b-3a59-440f-9094-73615757ad61
     meta: 
     runtimeAccess: RUNTIME_ACCESS_PRIVATE
-    scenes:
-    - name: workspaces/learning/scenes/house_party
-      displayName: House Party
-      description: The bass vibrates through the floorboards, pulsing with the chaotic
-        energy of the crowd. Laughter spills from open windows like fizzy champagne,
-        mingling with the sweet scent of spilled beer and the acrid tang of cigarette
-        smoke. Bodies sway and collide in a kaleidoscope of neon-lit movement, limbs
-        tangled under strobe lights. Laughter echoes through the air, punctuated
-        by the occasional shriek of delight or the low rumble of conversation lost
-        to the music's roar. Glasses clink in a toast, ice cubes scattering like
-        diamonds on the sticky floor. On the fringes, shy smiles and nervous glances
-        exchange, waiting for the beat to drop and the dance floor to swallow them
-        whole. This is a house party, a whirlwind of music, sweat, and fleeting connections,
-        where inhibitions melt and the night stretches before you like a blank canvas,
-        waiting to be splashed with the colors of shared experience.
-      characterReferences:
-      - character: workspaces/learning/characters/mr_michael
-        characterOverloads:
-        - defaultCharacterDescription:
-            givenName: Michael Specter
-            description: Mr. Michael, or "Mike" to his close friends, is a charismatic
-              lawyer with a knack for winning hearts and cases. Known for his sharp
-              wit and infectious laughter, he exudes confidence and charm in every
-              aspect of his life.
-          defaultCharacterAssets:
-            rpmModelUri: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_model/220f621d-24f8-4045-878e-e81832a1c815.glb
-            rpmImageUriPortrait: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/220f621d-24f8-4045-878e-e81832a1c815_portrait.jpg
-            rpmImageUriPosture: https://storage.googleapis.com/inworld-ai-usercontent-prod/rpm_image/220f621d-24f8-4045-878e-e81832a1c815_posture.jpg
-            avatarImg: 
-            avatarImgOriginal: 
-            thumbnailProgress: 1
-            avatarProgress: 1
-    keySecrets:
-    - key: 6JQoauqaPMUnCyBI52G9SQGFaauUW4J8
-      secret: 3paULv6hTbxTKTUdpttzBitzTx0dzaJLSPAiLs5bUoftWa8r6YRVVrYLikpUz8cM
-      state: ACTIVE
+    scenes: []
+    keySecrets: []
   m_UserID: 
   m_BillingAccount: billing-accounts/fb38df6b-3a59-440f-9094-73615757ad61
