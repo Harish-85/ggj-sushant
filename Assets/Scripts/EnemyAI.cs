@@ -31,12 +31,16 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] string deathScene;
     [SerializeField] Hiding hideScript;
+    [SerializeField] AudioSource walkAudio, chaseAudio, chaseMusic, chaseRoarAudio , jumpScare;
 
+    
     void Start()
     {
         walking = true;
         randNum = Random.Range(0, destinationAmount);
         currentDestination = destinations[randNum];
+        disableChaseAudio();
+        jumpScare.enabled = false;
     }
 
     // Update is called once per frame
@@ -60,6 +64,26 @@ public class EnemyAI : MonoBehaviour
             chasing = true;
         }
         AIMovement();
+
+        if(walking)
+        {
+            walkAudio.enabled = true;
+        }
+        else
+        {
+            walkAudio.enabled = false;
+        }
+
+        if(chasing)
+        {
+            chaseRoarAudio.enabled = true;
+            chaseAudio.enabled = true ;
+            chaseMusic.enabled = true ;
+        }
+        else
+        {
+            disableChaseAudio() ;
+        }
     }
 
     public void stopChase()
@@ -77,6 +101,7 @@ public class EnemyAI : MonoBehaviour
 
             dest = player.position;
             ai.destination = dest;
+           
             ai.speed = chaseSpeed;
             if (ai.remainingDistance <= chaseDistance)
             {
@@ -85,7 +110,10 @@ public class EnemyAI : MonoBehaviour
                 anim.ResetTrigger("idle");
                 anim.ResetTrigger("sprint");
 
+                jumpScare.enabled = true;
                 anim.SetTrigger("jumpscare");
+               
+                
                 StartCoroutine(Death());
                 chasing = false;
             }
@@ -97,6 +125,7 @@ public class EnemyAI : MonoBehaviour
             //Debug.Log("Walking");
             dest = currentDestination.position;
             ai.destination = dest;
+          
             ai.speed = walkSpeed;
             if (ai.remainingDistance <= ai.stoppingDistance)
             {
@@ -111,6 +140,7 @@ public class EnemyAI : MonoBehaviour
                 {
                     anim.ResetTrigger("sprint");
                     anim.ResetTrigger("walk");
+                   
                     anim.SetTrigger("idle");
                     ai.speed = 0;
                     StopCoroutine(StayIdle());
@@ -123,7 +153,7 @@ public class EnemyAI : MonoBehaviour
     }
 
     IEnumerator Death()
-    {
+    {    
         yield return new WaitForSeconds(jumpScareTime);
         SceneManager.LoadScene(deathScene);
     }
@@ -134,6 +164,7 @@ public class EnemyAI : MonoBehaviour
         stopChase();
         anim.ResetTrigger("sprint");
         anim.ResetTrigger("idle");
+
         anim.SetTrigger("walk");
 
     }
@@ -148,4 +179,13 @@ public class EnemyAI : MonoBehaviour
         anim.ResetTrigger("idle");
         anim.SetTrigger("walk");
     }
+
+    void disableChaseAudio()
+    {
+        chaseRoarAudio.enabled = false;
+        chaseAudio.enabled = false;
+        chaseMusic.enabled = false;
+    }
+
+   
 }
