@@ -30,11 +30,11 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    private void Start()
+    /*private void Start()
     {
         PlayMusic("Theme");
-    }
-    public void PlayMusic(string name)
+    }*/
+   /* public void PlayMusic(string name)
     {
         Sound s = Array.Find(musicSounds , x=> x.audioName==name);
 
@@ -44,18 +44,18 @@ public class AudioManager : MonoBehaviour
             musicSource.Play();
         }
     }
-
-    public void StopMusic()
+*/
+    /*public void StopMusic()
     {
         if (musicSource.isPlaying)
         {
             musicSource.Stop();
         }
-    }
+    }*/
 
     public void ToggleMusic()
     {
-        musicSource.mute = !musicSource.mute;
+        //musicSource.mute = !musicSource.mute;
     }
 
     public void MusicVolume(float volume)

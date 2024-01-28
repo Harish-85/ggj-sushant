@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         transitionAnim.SetTrigger("End");
 
         yield return new WaitForSeconds(1);
-        AudioManager._instance.StopMusic();
+        //AudioManager._instance.StopMusic();
         
         if (isAutoRun == true)
         {
@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Procedural");
         }
         transitionAnim.SetTrigger("Start");
-        AudioManager._instance.PlayMusic("LevelMusic");
+        //AudioManager._instance.PlayMusic("LevelMusic");
     }
     public void QuitGame()
     {
