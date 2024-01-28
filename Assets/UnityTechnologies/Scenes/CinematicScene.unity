@@ -519,8 +519,8 @@ MonoBehaviour:
   rawImage: {fileID: 1756387731}
   videoPlayer: {fileID: 842261525}
   videoClips:
-  - {fileID: 32900000, guid: 459231a0c02d5b34baa01021fee893a6, type: 3}
-  - {fileID: 32900000, guid: 8af79cc9210bd2f438ac107db58c2f67, type: 3}
+  - {fileID: 32900000, guid: c3479ccceb5bdb54db84353cbaffaded, type: 3}
+  - {fileID: 32900000, guid: fa5289cd7006db948a36a63cdb54111a, type: 3}
   texture: {fileID: 8400000, guid: 5ba43cff76216f9479d75ed608d6366f, type: 2}
 --- !u!1 &1503068660
 GameObject:
