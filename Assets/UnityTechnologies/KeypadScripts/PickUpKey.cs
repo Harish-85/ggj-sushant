@@ -49,7 +49,7 @@ public class PickUpKey : MonoBehaviour
             if (inReach)
             {
                 keyOB.SetActive(false);
-                // keySound.Play();
+                 keySound.Play();
                 invOB.SetActive(true);
                 pickUpText.SetActive(false);
             }

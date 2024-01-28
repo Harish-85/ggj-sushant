@@ -51,7 +51,7 @@ public class OpenBoxScript : MonoBehaviour
             if (inReach)
             {
                 keyOBNeeded.SetActive(false);
-                //openSound.Play();
+                openSound.Play();
                 boxOB.SetBool("open", true);
                 openText.SetActive(false);
                 isOpen = true;
