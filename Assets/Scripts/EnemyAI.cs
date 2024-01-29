@@ -32,8 +32,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] string deathScene;
     [SerializeField] Hiding hideScript;
     [SerializeField] AudioSource walkAudio, chaseAudio, chaseMusic, chaseRoarAudio , jumpScare;
+    RaycastHit hit;
 
-    
     void Start()
     {
         walking = true;
@@ -46,22 +46,25 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        //Vector3 playerDirection = (player.position - transform.position);
 
-        Vector3 playerDirection = (player.position - transform.position); // this vector will always be pointing towards the player.
-        float distanceToPlayer = playerDirection.magnitude;
-
-        //Debug.Log(distanceToPlayer+" "+ rayCastDistance);
-
-        if (distanceToPlayer <= rayCastDistance && !hideScript.hiding)
+        // Check if there is a clear line of sight between the enemy and the player
+        if (Physics.Raycast(transform.position + rayCastOffset, transform.forward, out hit, rayCastDistance))
         {
-            walking = false;
-            StopCoroutine(StayIdle());
-            StopCoroutine(Chase());
-            StartCoroutine(Chase());
-            anim.ResetTrigger("idle");
-            anim.ResetTrigger("walk");
-            anim.SetTrigger("sprint");
-            chasing = true;
+
+            if (hit.collider.CompareTag("Player") && !hideScript.hiding)
+            {
+                
+                walking = false;
+                StopCoroutine(StayIdle());
+                StopCoroutine(Chase());
+                StartCoroutine(Chase());
+                anim.ResetTrigger("idle");
+                anim.ResetTrigger("walk");
+                anim.SetTrigger("sprint");
+                chasing = true;
+            }
         }
         AIMovement();
 
@@ -103,7 +106,7 @@ public class EnemyAI : MonoBehaviour
             ai.destination = dest;
            
             ai.speed = chaseSpeed;
-            if (ai.remainingDistance <= chaseDistance)
+            if (ai.remainingDistance < chaseDistance)
             {
                 player.gameObject.SetActive(false);
                 anim.ResetTrigger("walk");
@@ -151,6 +154,12 @@ public class EnemyAI : MonoBehaviour
 
         }
     }
+    private void OnDrawGizmosSelected()
+    {
+        // Draw a red line from the enemy's position towards the player
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position + rayCastOffset, transform.forward * rayCastDistance);
+    }
 
     IEnumerator Death()
     {    
@@ -161,7 +170,7 @@ public class EnemyAI : MonoBehaviour
     {
         chaseTime = Random.Range(minChaseTime, maxChaseTime);
         yield return new WaitForSeconds(chaseTime);
-        stopChase();
+        
         anim.ResetTrigger("sprint");
         anim.ResetTrigger("idle");
 
